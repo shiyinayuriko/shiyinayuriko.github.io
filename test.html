@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+
+    <style>
+        .template {
+            display: none
+        }
+    </style>
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">Navbar</a>
+        </nav>
+        <div id="main-list" class="row">
+        </div>
+    </div>
+
+    <div class="col-md-4 template" id="template-card">
+        <div class="card">
+            <h4 class="card-header" id="name">群名</h4>
+            <div class="card-body">
+                <h6 class="card-title" id="gid">
+                    <b>群号</b>
+                </h6>
+                <p class="card-text" id="desc">描述</p>
+                <a href="#" class="btn btn-primary" id="autoAdd">一键加群</a>
+                <a href="#" class="btn btn-primary copy" data-toggle="tooltip" data-placement="right" data-original-title="Tooltip on right" id="copy">复制群号</a>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous">
+
+
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var gropuData = [
+                {
+                    name: "第⑨动画研究室",
+                    gid: "295805982",
+                    desc: "desc",
+                    url: "https://jq.qq.com/?_wv=1027&k=5PcqYP0"
+                }, {
+                    name: "第⑨动画研究室",
+                    gid: "295805982",
+                    desc: "desc",
+                    url: "https://jq.qq.com/?_wv=1027&k=5PcqYP0"
+                }, {
+                    name: "第⑨动画研究室",
+                    gid: "295805982",
+                    desc: "desc",
+                    url: "https://jq.qq.com/?_wv=1027&k=5PcqYP0"
+                }, {
+                    name: "第⑨动画研究室",
+                    gid: "295805982",
+                    desc: "desc",
+                    url: "https://jq.qq.com/?_wv=1027&k=5PcqYP0"
+                },
+            ]
+
+            for (i in gropuData) {
+                insertCard(gropuData[i]);
+            }
+            // new ClipboardJS(".copy");
+
+        });
+        function insertCard(group) {
+            var tmp = $("#template-card").clone();
+            tmp.removeClass("template");
+            tmp.find("#name").text(group.name);
+            tmp.find("#desc").text(group.desc);
+            tmp.find("#gid").text(group.gid);
+            tmp.find("#autoAdd").attr("href", group.url);
+            tmp.find("#copy").attr("data-clipboard-text", group.gid);
+            $("#main-list").append(tmp);
+        }
+    </script>
+</body>
+
+</html>
