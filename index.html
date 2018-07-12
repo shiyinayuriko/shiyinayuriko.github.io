@@ -35,32 +35,26 @@
                 </h6>
                 <p class="card-text" id="desc">描述</p>
                 <a href="#" class="btn btn-primary" id="autoAdd">一键加群</a>
-                <a href="#" class="btn btn-primary copy" data-toggle="tooltip" data-placement="right" data-original-title="Tooltip on right"
+                <a href="#" class="btn btn-primary copy" data-toggle="tooltip" data-trigger="click" data-placement="right" data-original-title="复制成功"
                     id="copy">复制群号</a>
             </div>
         </div>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous">
-
-
-        </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="js/popper.min.js" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="js/clipboard.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
             var gropuData = [
                 {
-                    name: "第⑨动画研究室",
-                    gid: "295805982",
+                    name: "沸点漫画社！",
+                    gid: "610529737",
                     desc: "desc",
-                    url: "https://jq.qq.com/?_wv=1027&k=5PcqYP0"
+                    url: "https://jq.qq.com/?_wv=1027&k=5sDpMo4"
                 }, {
                     name: "第⑨动画研究室",
                     gid: "295805982",
@@ -82,7 +76,7 @@
             for (i in gropuData) {
                 insertCard(gropuData[i]);
             }
-            // new ClipboardJS(".copy");
+            new ClipboardJS(".copy");
 
         });
         function insertCard(group) {
@@ -92,7 +86,15 @@
             tmp.find("#desc").text(group.desc);
             tmp.find("#gid").text(group.gid);
             tmp.find("#autoAdd").attr("href", group.url);
-            tmp.find("#copy").attr("data-clipboard-text", group.gid);
+            var copy = tmp.find("#copy");
+            copy.attr("data-clipboard-text", group.gid);
+            copy.tooltip();
+
+            copy.on('shown.bs.tooltip', function (e) {
+                setTimeout(function () {
+                    $(e.target).tooltip('hide');
+                }, 1000);
+            });
             $("#main-list").append(tmp);
         }
     </script>
