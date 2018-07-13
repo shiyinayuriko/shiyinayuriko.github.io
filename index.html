@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-cn">
 
 <head>
     <!-- Required meta tags -->
@@ -13,20 +13,28 @@
         .template {
             display: none
         }
+
+        .card {
+            margin-top: 15px
+        }
+
+        .btn {
+            margin-bottom: 5px
+        }
     </style>
-    <title>Hello, world!</title>
+    <title>沸点传送门</title>
 </head>
 
 <body>
     <div class="container">
         <nav class="navbar navbar-dark bg-primary">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">沸点传送门</a>
         </nav>
         <div id="main-list" class="row">
         </div>
     </div>
 
-    <div class="col-md-4 template" id="template-card">
+    <div class="col-xl-3 col-lg-4 col-sm-6 template" id="template-card">
         <div class="card">
             <h4 class="card-header" id="name">群名</h4>
             <div class="card-body">
@@ -34,8 +42,8 @@
                     <b>群号</b>
                 </h6>
                 <p class="card-text" id="desc">描述</p>
-                <a href="#" class="btn btn-primary" id="autoAdd">一键加群</a>
-                <a href="#" class="btn btn-primary copy" data-toggle="tooltip" data-trigger="click" data-placement="right" data-original-title="复制成功"
+                <a href="#" class="btn btn-primary" id="autoAdd" target="_blank">一键加群</a>
+                <a href="#" class="btn btn-outline-secondary copy" data-toggle="tooltip" data-trigger="click" data-placement="right" data-original-title="复制成功"
                     id="copy">复制群号</a>
             </div>
         </div>
@@ -93,7 +101,7 @@
             copy.on('shown.bs.tooltip', function (e) {
                 setTimeout(function () {
                     $(e.target).tooltip('hide');
-                }, 1000);
+                }, 500);
             });
             $("#main-list").append(tmp);
         }
